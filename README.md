@@ -1,27 +1,24 @@
 # AppointmentApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
+Aplikacja spotkań to narzędzie umożliwiające użytkownikowi zarządzanie spotkaniami w prosty i intuicyjny sposób. Dzięki niej użytkownicy mogą dodawać nowe spotkania, edytować istniejące oraz usuwać spotkania z listy.
 
-## Development server
+## Funkcje i Opis Działania
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### 1. Dodawanie nowych spotkań
+Użytkownik może dodać nowe spotkanie poprzez wprowadzenie tytułu spotkania oraz daty. Po wprowadzeniu tych danych, użytkownik klika przycisk "Dodaj", a spotkanie zostaje zapisane na liście spotkań.
+Została zrobiona prosta walidacja w formie Alertu. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 2. Edytowanie spotkań
+Aplikacja umożliwia użytkownikowi edytowanie szczegółów spotkania. Po kliknięciu przycisku "Edytuj", otwiera się modalne okno, w którym użytkownik może zmienić tytuł spotkania oraz datę. Po zapisaniu zmian, spotkanie jest zaktualizowane na liście.
 
-## Build
+### 3. Usuwanie spotkań: 
+Użytkownik może również usunąć spotkania. Przy każdym spotkaniu dostępny jest przycisk "Usuń", który umożliwia usunięcie spotkania z listy. Usunięcie spotkania jest natychmiastowe i nieodwracalne.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 4. Przechowywanie danych w LocalStorage:
+Wszystkie spotkania są przechowywane w LocalStorage przeglądarki, co oznacza, że po zamknięciu aplikacji i jej ponownym otwarciu, dane spotkań pozostaną zachowane. Użytkownik nie musi się martwić o utratę swoich spotkań, ponieważ dane są przechowywane lokalnie na urządzeniu. 
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Wykorzystane technologie i narzędzia
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[![My Skills](https://skillicons.dev/icons?i=html,css,bootstrap,angular,git,vscode)](https://skillicons.dev)
