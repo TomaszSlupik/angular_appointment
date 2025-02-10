@@ -1,3 +1,63 @@
-<p>{{ appointment.id }}</p>
-<p>{{ appointment.title }}</p>
-<p>{{ appointment.date }}</p>
+<div class="container"
+style="text-align: center; margin-top: 1em;"
+>
+    <h2>Dodaj nowe spotkanie</h2>
+    <div
+    class="d-flex flex-column flex-sm-row align-items-center justify-content-center"
+    >
+      
+      <input 
+      class="form-control mb-2 mb-sm-0"
+      [(ngModel)]="newAppointmentTitle"
+      placeholder="Wpisz spotkanie"
+      type="text">
+
+    <input 
+      class="form-control mb-2 mb-sm-0 ms-sm-2"
+      [(ngModel)]="newAppointmentDate"
+      placeholder="Podaj datę"
+      type="date">
+
+    <button
+      style="min-width: 100px; height: 38px;"
+      class="btn btn-primary mt-2 mt-sm-0 ms-sm-2"
+      (click)="addAppointment()"
+    >
+      Dodaj
+    </button>
+    </div>
+
+</div>
+
+<div class="container my-4">
+  <div *ngIf="appointments.length > 0">
+    <h2 class="text-center mb-4">Lista spotkań</h2>
+    <ul class="list-group">
+      <li *ngFor="let appointment of appointments; let i = index" class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ appointment.title }}</strong> - {{ appointment.date | date: 'dd.MM.yyyy' }}
+        </div>
+        <div class="d-flex flex-wrap justify-content-between">
+          <button
+          style="width: 100px; height: 38px;"
+          class="btn btn-warning btn-sm"
+        >
+          Edytuj
+        </button>
+          <button
+            style="width: 100px; height: 38px;"
+            class="btn btn-danger btn-sm"
+            (click)="deleteAppointment(i)"
+          >
+            Usuń
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="appointments.length === 0" class="text-center">
+    <p>Brak spotkań w bazie danych</p>
+  </div>
+</div>
+
+
