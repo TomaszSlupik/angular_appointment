@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Appointment} from '../models/appointment'
 import { OnInit } from '@angular/core';
+import { Modal } from 'bootstrap';
 
 @Component({
   selector: 'app-appointment-list',
@@ -10,8 +11,12 @@ import { OnInit } from '@angular/core';
 export class AppointmentListComponent implements OnInit {
 
     newAppointmentTitle: string = "";
-    newAppointmentDate: Date = new Date();
+    newAppointmentDate: string = "";
     appointments: Appointment[] = [];
+
+    editAppointmentTitle: string = "";
+    editAppointmentDate: string = "";
+    editAppointmentIndex: number = -1;
 
     ngOnInit(): void {
       const storedAppointments = localStorage.getItem("appointments");
@@ -19,6 +24,10 @@ export class AppointmentListComponent implements OnInit {
         this.appointments = JSON.parse(storedAppointments); 
         console.log('Dane pobrane z LocalStorage');
       }
+
+      const today = new Date();
+      const formattedDate = today.toISOString().split('T')[0];
+      this.newAppointmentDate = formattedDate;
     }
     
 
@@ -27,12 +36,14 @@ export class AppointmentListComponent implements OnInit {
         const newAppintment: Appointment = {
           id: Date.now(),
           title: this.newAppointmentTitle,
-          date: new Date(this.newAppointmentDate)
+          date: this.newAppointmentDate
         }
         this.appointments.push(newAppintment)
 
         this.newAppointmentTitle = ""
-        this.newAppointmentDate = new Date()
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
+        this.newAppointmentDate = formattedDate
 
         localStorage.setItem("appointments", JSON.stringify(this.appointments))
       }
@@ -46,5 +57,18 @@ export class AppointmentListComponent implements OnInit {
       this.appointments.splice(index, 1)
       localStorage.setItem("appointments", JSON.stringify(this.appointments))
     }
+
+    // okno edycji
+    editOpenWindow (appointment: Appointment, index: number) {
+      this.editAppointmentTitle = appointment.title
+      this.editAppointmentDate = appointment.date
+      this.editAppointmentIndex = index
+
+      const modalElement = document.getElementById('editModal')!;
+      const modal = new Modal(modalElement);
+      modal.show();
+      console.log('test')
+    }
+    
 
 }
