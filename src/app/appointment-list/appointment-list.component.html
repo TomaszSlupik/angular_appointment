@@ -91,7 +91,10 @@ style="text-align: center; margin-top: 1em;"
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
-        <button type="button" class="btn btn-primary"
+        <button 
+        (click)="saveEditToLocalStorage()"
+        type="button" class="btn btn-primary"
+        data-bs-dismiss="modal"
         >Zapisz zmiany
       </button>
       </div>

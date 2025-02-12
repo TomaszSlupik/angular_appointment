@@ -67,8 +67,28 @@ export class AppointmentListComponent implements OnInit {
       const modalElement = document.getElementById('editModal')!;
       const modal = new Modal(modalElement);
       modal.show();
-      console.log('test')
     }
     
+    saveEditToLocalStorage () {
+      if (this.editAppointmentTitle.trim().length && this.editAppointmentDate) {
+        const editAppointment: Appointment = {
+          id: this.appointments[this.editAppointmentIndex].id, 
+          title: this.editAppointmentTitle,
+          date: this.editAppointmentDate
+        }
+
+        this.appointments[this.editAppointmentIndex] = editAppointment;
+        localStorage.setItem("appointments", JSON.stringify(this.appointments))
+
+        const modalElement = document.getElementById('editModal')!;
+        const modal = new Modal(modalElement);
+        modal.hide();
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = 'visible'
+      }
+      else {
+        alert("Pola nie mogą być puste")
+      }
+    }
 
 }
